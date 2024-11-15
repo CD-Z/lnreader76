@@ -1,4 +1,7 @@
 {
   "name": "lnreader76",
-  "displayName": "lnreader76"
+  "displayName": "lnreader76",
+  "plugins": [
+    "expo-localization"
+  ]
 }

@@ -1,0 +1,264 @@
+{
+  "advancedSettingsScreen": {
+    "deleteReadChapters": "Удалять прочитанные главы",
+    "deleteReadChaptersDialogTitle": "Вы уверены? Все главы, помеченные как прочитанные, будут удалены."
+  },
+  "browse": "Обзор",
+  "browseScreen": {
+    "addedToLibrary": "Добавлено в библиотеку",
+    "discover": "Узнайте больше",
+    "globalSearch": "Глобальный поиск",
+    "lastUsed": "Последнее использование",
+    "latest": "Последние",
+    "listEmpty": "Включите языки в настройках",
+    "pinned": "Закреплено",
+    "removeFromLibrary": "Удалено из библиотеки",
+    "searchbar": "Поиск источника"
+  },
+  "browseSettings": "Настройки обзора",
+  "browseSettingsScreen": {
+    "languages": "Языки",
+    "onlyShowPinnedSources": "Показывать только закрепленные источники",
+    "searchAllSources": "Поиск по всем источникам",
+    "searchAllWarning": "Поиск по большому количеству источников может привести к зависанию приложения, пока поиск не завершится."
+  },
+  "categories": {
+    "addCategories": "Добавить категорию",
+    "defaultCategory": "Категория по умолчанию",
+    "deleteModal": {
+      "desc": "Вы хотите удалить эту категорию",
+      "header": "Удалить категорию"
+    },
+    "duplicateError": "Категория с таким названием уже существует!",
+    "editCategories": "Переименовать категорию",
+    "emptyMsg": "У вас нет категорий. Нажмите кнопку плюс, чтобы создать её для организации вашей библиотеки",
+    "header": "Изменить категорию",
+    "setCategories": "Установить категории",
+    "setModalEmptyMsg": "У вас нет категорий. Нажмите кнопку Изменить, чтобы создать ее для организации вашей библиотеки"
+  },
+  "common": {
+    "add": "Добавить",
+    "all": "Все",
+    "cancel": "Отменить",
+    "categories": "Категории",
+    "chapters": "Главы",
+    "clear": "Очистить",
+    "display": "Вид",
+    "edit": "Изменить",
+    "filter": "Фильтр",
+    "globally": "глобально",
+    "install": "Установить",
+    "name": "Название",
+    "newUpdateAvailable": "Доступно новое обновление",
+    "ok": "Ок",
+    "reset": "Сбросить",
+    "retry": "Повторить",
+    "save": "Сохранить",
+    "search": "Поиск",
+    "searchFor": "Искать",
+    "searchResults": "Результаты поиска",
+    "settings": "Настройки",
+    "sort": "Сортировка",
+    "submit": "Продолжить"
+  },
+  "webview": {
+    "refresh": "Обновить",
+    "share": "Поделиться",
+    "openInBrowser": "Открыть в браузере",
+    "clearCookies": "Очистить cookies",
+    "cookiesCleared": "Cookies очищены",
+    "clearData": "Очистить данные WebView",
+    "dataDeleted": "Данные WebView очищены"
+  },
+  "date": {
+    "calendar": {
+      "lastDay": "[Вчера]",
+      "lastWeek": "[В прошлый] dddd",
+      "nextDay": "[Завтра]",
+      "sameDay": "[Сегодня]"
+    }
+  },
+  "downloadScreen": {
+    "dbInfo": "Загрузки сохраняются в базе данных SQLite.",
+    "downloadChapters": "загруженные главы",
+    "downloadsLower": "Загруженное",
+    "noDownloads": "Ничего не загружено"
+  },
+  "generalSettings": "Основные",
+  "generalSettingsScreen": {
+    "asc": "(По возрастанию)",
+    "autoDownload": "Автозагрузка",
+    "bySource": "По источникам",
+    "chapterSort": "Сортировка глав по умолчанию",
+    "desc": "(По убыванию)",
+    "disableHapticFeedback": "Отключить виброотклик",
+    "displayMode": "Режим Отображения",
+    "downloadNewChapters": "Скачивать новые главы",
+    "epub": "EPUB",
+    "epubLocation": "Расположение EPUB",
+    "epubLocationDescription": "Место открытия и экспорта файлов EPUB.",
+    "globalUpdate": "Обновить всё",
+    "itemsPerRow": "элемента в ряду",
+    "itemsPerRowLibrary": "Количество элементов в ряду",
+    "jumpToLastReadChapter": "Jump to last read chapter in list",
+    "novel": "Тайтл",
+    "novelBadges": "Иконки тайтлов",
+    "novelSort": "Сортировка тайтлов",
+    "refreshMetadata": "Автоматически обновлять метаданные",
+    "refreshMetadataDescription": "Проверять наличие новой обложки и описания при обновлении библиотеки",
+    "updateLibrary": "Обновлять библиотеку при запуске",
+    "updateOngoing": "Обновлять только онгоинги",
+    "updateTime": "Показать время последнего обновления",
+    "useFAB": "Использовать FAB в библиотеке"
+  },
+  "globalSearch": {
+    "allSources": "все источники",
+    "pinnedSources": "закреплённые источники",
+    "searchIn": "Поиск новеллы в"
+  },
+  "history": "История",
+  "historyScreen": {
+    "clearHistorWarning": "Вы уверены? Вся история будет потеряна.",
+    "searchbar": "Поиск в истории"
+  },
+  "library": "Библиотека",
+  "libraryScreen": {
+    "bottomSheet": {
+      "display": {
+        "badges": "Значки",
+        "comfortable": "Комфортная сетка",
+        "compact": "Компактная сетка",
+        "displayMode": "Режим отображения",
+        "downloadBadges": "Значок загруженных глав",
+        "list": "Список",
+        "noTitle": "Только сетка обложки",
+        "showNoOfItems": "Показывать количество элементов",
+        "unreadBadges": "Не прочитано Значки"
+      },
+      "filters": {
+        "completed": "Завершено",
+        "downloaded": "Загружено",
+        "started": "Начато",
+        "unread": "Не прочитано"
+      },
+      "sortOrders": {
+        "alphabetically": "По алфавиту",
+        "dateAdded": "По дате добавления",
+        "download": "Загружено",
+        "lastRead": "Последнее прочитанное",
+        "lastUpdated": "Последнее обновление",
+        "totalChapters": "Всего глав",
+        "unread": "Непрочитанные"
+      }
+    },
+    "empty": "Библиотека пуста. Добавьте новеллы из меню «Источники».",
+    "searchbar": "Поиск в библиотеке"
+  },
+  "more": "Ещё",
+  "moreScreen": {
+    "downloadOnly": "Только загруженные главы",
+    "incognitoMode": "Режим инкогнито"
+  },
+  "novelScreen": {
+    "addToLibaray": "Добавить в библиотеку",
+    "chapters": "главы",
+    "continueReading": "Продолжить чтение",
+    "convertToEpubModal": {
+      "chaptersWarning": "Включать в EPUB только загруженные главы",
+      "chooseLocation": "Выберите каталог хранения EPUB",
+      "pathToFolder": "Путь к папке сохранения EPUB",
+      "useCustomCSS": "Использовать пользовательский CSS",
+      "useCustomJS": "Использовать пользовательский JS",
+      "useCustomJSWarning": "Может поддерживаться не всеми читателями EPUB",
+      "useReaderTheme": "Использовать тему для чтения"
+    },
+    "inLibaray": "В библиотеке",
+    "jumpToChapterModal": {
+      "chapterName": "Название главы",
+      "chapterNumber": "Номер главы",
+      "error": {
+        "validChapterName": "Введите допустимое название главы",
+        "validChapterNumber": "Введите действительный номер главы"
+      },
+      "jumpToChapter": "Перейти к главе",
+      "openChapter": "Открыть главу"
+    },
+    "migrate": "Перенос",
+    "noSummary": "Нет сводки"
+  },
+  "readerScreen": {
+    "bottomSheet": {
+      "allowTextSelection": "Разрешить выделение текста",
+      "autoscroll": "Автопрокрутка",
+      "bionicReading": "Бионическое чтение",
+      "color": "Цвет",
+      "fontStyle": "Шрифт",
+      "fullscreen": "Полноэкранный",
+      "lineHeight": "Высота строки",
+      "pageReader": "Tap left or right to navigate through pages in the reader (Experimental)",
+      "removeExtraSpacing": "Удалить дополнительный интервал параграфа",
+      "renderHml": "Рендер HTML",
+      "scrollAmount": "Смещение автопрокрутки (высота экрана по умолчанию)",
+      "showBatteryAndTime": "Показывать батарею и время",
+      "showProgressPercentage": "Показывать процент прогресса",
+      "showSwipeMargins": "Показать зоны прокрутки",
+      "swipeGestures": "Проведите влево или вправо для перехода между главами",
+      "textAlign": "Выравнивание текста",
+      "textSize": "Размер текста",
+      "useChapterDrawerSwipeNavigation": "Проведите вправо, чтобы открыть",
+      "verticalSeekbar": "Вертикальная панель навигации",
+      "volumeButtonsScroll": "Прокрутка кноками громкости"
+    },
+    "drawer": {
+      "scrollToBottom": "Прокрутить вниз",
+      "scrollToCurrentChapter": "Прокрутка к текущей главе",
+      "scrollToTop": "Прокрутить вверх"
+    },
+    "finished": "Завершено",
+    "noNextChapter": "Следующей главы нет"
+  },
+  "readerSettings": {
+    "autoScrollInterval": "Интервал автопрокрутки (в секундах)",
+    "autoScrollOffset": "Смещение автопрокрутки (высота экрана по умолчанию)",
+    "backgroundColor": "Цвет фона",
+    "backgroundColorModal": "Цвет фона при чтении",
+    "clearCustomCSS": "Вы уверены? Ваш пользовательский CSS будет сброшен.",
+    "clearCustomJS": "Вы уверены? Ваш пользовательский JS будет сброшен.",
+    "cssHint": "Подсказка: Вы можете создать исходный код конфигурации с исходным ID. (#sourceId-[SOURCEID])",
+    "customCSS": "Пользовательские CSS",
+    "customJS": "Пользовательский JS",
+    "deleteCustomTheme": "Удалить пользовательскую тему",
+    "jsHint": "Подсказка: У вас есть доступ к следующим переменным: html, novelName, chapterName, sourceId, chapterId, novelId",
+    "notSaved": "Не сохранено",
+    "openCSSFile": "Открыть CSS-файл",
+    "openJSFile": "Открыть JS-файл",
+    "preset": "Предустановка",
+    "readerTheme": "Тема при чтении",
+    "saveCustomTheme": "Сохранить пользовательскую тему",
+    "textColor": "Цвет текста",
+    "textColorModal": "Цвет текста при чтении",
+    "title": "Чтение",
+    "verticalSeekbarDesc": "Переключение между вертикальной и горизонтальной панелями навигации"
+  },
+  "sourceScreen": {
+    "noResultsFound": "Ничего не найдено"
+  },
+  "statsScreen": {
+    "downloadedChapters": "Загруженные главы",
+    "genreDistribution": "Распределение по жанру",
+    "readChapters": "Прочитанные главы",
+    "statusDistribution": "Распределение статуса",
+    "title": "Статистика",
+    "titlesInLibrary": "Названия в библиотеке",
+    "totalChapters": "Всего глав",
+    "unreadChapters": "Непрочитанные главы"
+  },
+  "updates": "Обновления",
+  "updatesScreen": {
+    "emptyView": "Нет последних обновлений",
+    "lastUpdatedAt": "Последнее обновление библиотеки:",
+    "newChapters": "новые главы",
+    "searchbar": "Поиск в обновлениях",
+    "updatesLower": "обновлено"
+  }
+}

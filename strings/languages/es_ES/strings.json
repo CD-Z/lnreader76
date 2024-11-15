@@ -1,0 +1,255 @@
+{
+  "advancedSettingsScreen": {
+    "deleteReadChapters": "Eliminar capítulos leídos",
+    "deleteReadChaptersDialogTitle": "¿Estás seguro? Se eliminarán todos los capítulos marcados como leídos."
+  },
+  "browse": "Navegar",
+  "browseScreen": {
+    "addedToLibrary": "Añadido a la biblioteca",
+    "discover": "Explorar",
+    "globalSearch": "Búsqueda global",
+    "lastUsed": "Última usada",
+    "latest": "Últimos",
+    "listEmpty": "Habilitar idiomas desde la configuración",
+    "pinned": "Fijadas",
+    "removeFromLibrary": "Eliminar de la biblioteca",
+    "searchbar": "Buscar fuente"
+  },
+  "browseSettings": "Ajustes de Navegación",
+  "browseSettingsScreen": {
+    "languages": "Idiomas",
+    "onlyShowPinnedSources": "Mostrar sólo fuentes fijadas",
+    "searchAllSources": "Buscar en todas las fuentes",
+    "searchAllWarning": "Buscar un gran número de fuentes puede congelar la aplicación hasta que la búsqueda haya finalizado."
+  },
+  "categories": {
+    "addCategories": "Añadir categoría",
+    "defaultCategory": "Categoría por defecto",
+    "deleteModal": {
+      "desc": "¿Deseas eliminar la categoría?",
+      "header": "Eliminar categoría"
+    },
+    "duplicateError": "¡Ya existe una categoría con este nombre!",
+    "editCategories": "Renombrar categoría",
+    "emptyMsg": "No tienes categorías. Pulsa el botón más para crear una para organizar tu biblioteca",
+    "header": "Editar categorías",
+    "setCategories": "Establecer Categorías",
+    "setModalEmptyMsg": "No tienes categorías. Pulsa el botón Editar para crear una para organizar tu biblioteca"
+  },
+  "common": {
+    "add": "Añadir",
+    "all": "Todos",
+    "cancel": "Cancelar",
+    "categories": "Categorías",
+    "chapters": "Capítulos",
+    "clear": "Limpiar",
+    "display": "Visualización",
+    "edit": "Editar",
+    "filter": "Filtrar",
+    "globally": "globalmente",
+    "install": "Instalar",
+    "name": "Nombre",
+    "newUpdateAvailable": "Nueva actualización disponible",
+    "ok": "Ok",
+    "reset": "Reiniciar",
+    "retry": "Reintentar",
+    "save": "Guardar",
+    "search": "Buscar",
+    "searchFor": "Buscar por",
+    "searchResults": "Resultados de la búsqueda",
+    "settings": "Configuración",
+    "sort": "Ordenar",
+    "submit": "Enviar"
+  },
+  "date": {
+    "calendar": {
+      "lastDay": "[Yesterday]",
+      "lastWeek": "[Last] dddd",
+      "nextDay": "[Tomorrow]",
+      "sameDay": "[Today]"
+    }
+  },
+  "downloadScreen": {
+    "dbInfo": "Las descargas se guardan en una base de datos SQLite.",
+    "downloadChapters": "capítulos descargados",
+    "downloadsLower": "descargas",
+    "noDownloads": "No hay descargas"
+  },
+  "generalSettings": "General",
+  "generalSettingsScreen": {
+    "asc": "(Ascendente)",
+    "autoDownload": "Descarga automática",
+    "bySource": "Por fuente",
+    "chapterSort": "Orden de capítulo por defecto",
+    "desc": "(Descendente)",
+    "disableHapticFeedback": "Deshabilitar la respuesta háptica",
+    "displayMode": "Modo de visualización",
+    "downloadNewChapters": "Descargar nuevos capítulos",
+    "epub": "EPUB",
+    "epubLocation": "Ubicación EPUB",
+    "epubLocationDescription": "El lugar donde se abren y exportan sus archivos EPUB.",
+    "globalUpdate": "Actualización global",
+    "itemsPerRow": "Elementos por fila",
+    "itemsPerRowLibrary": "Elementos por fila en la biblioteca",
+    "jumpToLastReadChapter": "Jump to last read chapter in list",
+    "novel": "Novela",
+    "novelBadges": "Insignia de novelas",
+    "novelSort": "Ordenar novela",
+    "refreshMetadata": "Actualizar automáticamente los metadatos",
+    "refreshMetadataDescription": "Buscar nueva portada y detalles al actualizar la biblioteca",
+    "updateLibrary": "Actualizar biblioteca al iniciar",
+    "updateOngoing": "Solo actualizar novelas en curso",
+    "updateTime": "Mostrar la última actualización",
+    "useFAB": "Usar FAB en la biblioteca"
+  },
+  "globalSearch": {
+    "allSources": "Todas las fuentes",
+    "pinnedSources": "fuentes fijadas",
+    "searchIn": "Buscar una novela en"
+  },
+  "history": "Historial",
+  "historyScreen": {
+    "clearHistorWarning": "¿Estás seguro? Todo el historial se perderá.",
+    "searchbar": "Historial de búsqueda"
+  },
+  "library": "Biblioteca",
+  "libraryScreen": {
+    "bottomSheet": {
+      "display": {
+        "badges": "Insignias",
+        "comfortable": "Rejilla cómoda",
+        "compact": "Rejilla compacta",
+        "displayMode": "Modo de visualización",
+        "downloadBadges": "Descargar insignias",
+        "list": "Lista",
+        "noTitle": "Cubrir solo la rejilla",
+        "showNoOfItems": "Mostrar número de elementos",
+        "unreadBadges": "Insignias no leídas"
+      },
+      "filters": {
+        "completed": "Terminado",
+        "downloaded": "Descargado",
+        "started": "Iniciado",
+        "unread": "No leído"
+      },
+      "sortOrders": {
+        "alphabetically": "Alfabéticamente",
+        "dateAdded": "Fecha agregada",
+        "download": "Descargado",
+        "lastRead": "Última lectura",
+        "lastUpdated": "Última actualización",
+        "totalChapters": "Capítulos totales",
+        "unread": "No leído"
+      }
+    },
+    "empty": "Tu biblioteca está vacía. Añade series a tu biblioteca desde el navegador.",
+    "searchbar": "Buscar en la biblioteca"
+  },
+  "more": "Más",
+  "moreScreen": {
+    "downloadOnly": "Sólo descargado",
+    "incognitoMode": "Modo Incógnito"
+  },
+  "novelScreen": {
+    "addToLibaray": "Añadir a la biblioteca",
+    "chapters": "capítulos",
+    "continueReading": "Continuar leyendo",
+    "convertToEpubModal": {
+      "chaptersWarning": "Sólo los capítulos descargados están incluidos en el EPUB",
+      "chooseLocation": "Seleccionar directorio de almacenamiento EPUB",
+      "pathToFolder": "Ruta a la carpeta de guardado de EPUB",
+      "useCustomCSS": "Usar CSS personalizado",
+      "useCustomJS": "Usar JS personalizado",
+      "useCustomJSWarning": "Puede no ser soportado por todos los lectores de EPUB",
+      "useReaderTheme": "Usar tema del lector"
+    },
+    "inLibaray": "En biblioteca",
+    "jumpToChapterModal": {
+      "chapterName": "Nombre del capítulo",
+      "chapterNumber": "Número del capítulo",
+      "error": {
+        "validChapterName": "Introduzca un nombre de capítulo válido",
+        "validChapterNumber": "Introduzca un número de capítulo válido"
+      },
+      "jumpToChapter": "Saltar al capítulo",
+      "openChapter": "Abrir Capítulo"
+    },
+    "migrate": "Migrar",
+    "noSummary": "Sin resumen"
+  },
+  "readerScreen": {
+    "bottomSheet": {
+      "allowTextSelection": "Permitir selección de texto",
+      "autoscroll": "Desplazamiento automático",
+      "bionicReading": "Lectura biónica",
+      "color": "Color",
+      "fontStyle": "Estilo de fuente",
+      "fullscreen": "Pantalla completa",
+      "lineHeight": "Interlineado",
+      "pageReader": "Tap left or right to navigate through pages in the reader (Experimental)",
+      "removeExtraSpacing": "Eliminar espaciado extra del párrafo",
+      "renderHml": "Renderizar HTML",
+      "scrollAmount": "Cantidad de desplazamiento (alto de la pantalla de forma predeterminada)",
+      "showBatteryAndTime": "Mostrar batería y tiempo",
+      "showProgressPercentage": "Mostrar porcentaje de progreso",
+      "showSwipeMargins": "Mostrar márgenes de deslizamiento",
+      "swipeGestures": "Desliza a la izquierda o a la derecha para navegar entre los capítulos",
+      "textAlign": "Alineación del texto",
+      "textSize": "Tamaño del texto",
+      "useChapterDrawerSwipeNavigation": "Desliza hacia la derecha para abrir el cajón",
+      "verticalSeekbar": "Barra de búsqueda vertical",
+      "volumeButtonsScroll": "Deslizamiento de botones de volumen"
+    },
+    "drawer": {
+      "scrollToBottom": "Desplazarse hasta abajo",
+      "scrollToCurrentChapter": "Desplazar al capítulo actual",
+      "scrollToTop": "Desplazar a arriba"
+    },
+    "finished": "Finalizado",
+    "noNextChapter": "No hay próximo capítulo"
+  },
+  "readerSettings": {
+    "autoScrollInterval": "Intervalo de desplazamiento automático (en segundos)",
+    "autoScrollOffset": "Desplazamiento automático de desplazamiento (altura de pantalla por defecto)",
+    "backgroundColor": "Color de fondo",
+    "backgroundColorModal": "Color de fondo del lector",
+    "clearCustomCSS": "¿Estás seguro? Se restablecería tu CSS personalizado.",
+    "clearCustomJS": "¿Estás seguro? Tu JS personalizado se restablecería.",
+    "cssHint": "Sugerencia: Puedes crear una configuración CSS específica de origen con el ID de origen. (#sourceId-[SOURCEID])",
+    "customCSS": "CSS personalizado",
+    "customJS": "JS Personalizado",
+    "deleteCustomTheme": "Eliminar tema personalizado",
+    "jsHint": "Sugerencia: Tiene acceso a las siguientes variables: html, novelName, chapterName, sourceId, chapterId, novelId",
+    "notSaved": "No guardado",
+    "openCSSFile": "Abrir archivo CSS",
+    "openJSFile": "Abrir archivo JS",
+    "preset": "Preajuste",
+    "readerTheme": "Tema del lector",
+    "saveCustomTheme": "Guardar tema personalizado",
+    "textColor": "Color del texto",
+    "textColorModal": "Color del texto del lector",
+    "title": "Lector",
+    "verticalSeekbarDesc": "Cambiar entre barra de búsqueda vertical y horizontal"
+  },
+  "sourceScreen": {
+    "noResultsFound": "No se han encontrado resultados"
+  },
+  "statsScreen": {
+    "downloadedChapters": "Capítulos descargados",
+    "genreDistribution": "Distribución de género",
+    "readChapters": "Leer capítulos",
+    "statusDistribution": "Distribución de estado",
+    "title": "Estadísticas",
+    "titlesInLibrary": "Títulos en biblioteca",
+    "totalChapters": "Capítulos totales",
+    "unreadChapters": "Capítulos no leídos"
+  },
+  "updates": "Actualizaciones",
+  "updatesScreen": {
+    "emptyView": "No hay actualizaciones recientes",
+    "lastUpdatedAt": "Biblioteca actualizada por última vez:",
+    "newChapters": "Nuevos capítulos",
+    "searchbar": "Buscar actualizaciones",
+    "updatesLower": "actualizaciones"
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "advancedSettingsScreen": {
+    "deleteReadChapters": "Delete read chapters",
+    "deleteReadChaptersDialogTitle": "Are you sure? All chapters marked as read will be deleted."
+  },
+  "browse": "Browse",
+  "browseScreen": {
+    "addedToLibrary": "Added to library",
+    "discover": "Discover",
+    "globalSearch": "Global search",
+    "lastUsed": "Last used",
+    "latest": "Latest",
+    "listEmpty": "Enable languages from settings",
+    "pinned": "Pinned",
+    "removeFromLibrary": "Removed from library",
+    "searchbar": "Search sources"
+  },
+  "browseSettings": "Browse Settings",
+  "browseSettingsScreen": {
+    "languages": "Languages",
+    "onlyShowPinnedSources": "Only show pinned sources",
+    "searchAllSources": "Search all sources",
+    "searchAllWarning": "Searching a large number of sources may freeze the app till searching is finished."
+  },
+  "categories": {
+    "addCategories": "Add category",
+    "defaultCategory": "Default category",
+    "deleteModal": {
+      "desc": "Do you wish to delete category",
+      "header": "Delete category"
+    },
+    "duplicateError": "A category with this name already exists!",
+    "editCategories": "Rename category",
+    "emptyMsg": "You have no categories. Tap the plus button to create one for organizing your library",
+    "header": "Edit categories",
+    "setCategories": "Set categories",
+    "setModalEmptyMsg": "You have no categories. Tap the Edit button to create one for organizing your library"
+  },
+  "common": {
+    "add": "ଯୋଡ଼ନ୍ତୁ",
+    "all": "All",
+    "cancel": "Cancel",
+    "categories": "ବର୍ଗ",
+    "chapters": "ଅଧ୍ୟାୟ",
+    "clear": "ସଫା କରିବା",
+    "display": "Display",
+    "edit": "ସମ୍ପାଦନା",
+    "filter": "Filter",
+    "globally": "globally",
+    "install": "Install",
+    "name": "ନାମ",
+    "newUpdateAvailable": "ନୂଆ ଅଦ୍ୟତନ ଉପଲବ୍ଧ",
+    "ok": "ଠିକ୍ ଅଛି",
+    "reset": "Reset",
+    "retry": "ପୁନଃ ଚେଷ୍ଟା କରିବା",
+    "save": "ସଞ୍ଚୟ କରିବା",
+    "search": "ସନ୍ଧାନ",
+    "searchFor": "Search for",
+    "searchResults": "Search results",
+    "settings": "Settings",
+    "sort": "Sort",
+    "submit": "Submit"
+  },
+  "date": {
+    "calendar": {
+      "lastDay": "[Yesterday]",
+      "lastWeek": "[Last] dddd",
+      "nextDay": "[Tomorrow]",
+      "sameDay": "[Today]"
+    }
+  },
+  "downloadScreen": {
+    "dbInfo": "Downloads are saved in a SQLite Database.",
+    "downloadChapters": "downloaded Chapters",
+    "downloadsLower": "downloads",
+    "noDownloads": "No downloads"
+  },
+  "generalSettings": "General",
+  "generalSettingsScreen": {
+    "asc": "(Ascending)",
+    "autoDownload": "Auto-download",
+    "bySource": "By source",
+    "chapterSort": "Default chapter sort",
+    "desc": "(Descending)",
+    "disableHapticFeedback": "Disable haptic feedback",
+    "displayMode": "Display Mode",
+    "downloadNewChapters": "Download new chapters",
+    "epub": "EPUB",
+    "epubLocation": "EPUB Location",
+    "epubLocationDescription": "The place where you open and export your EPUB files.",
+    "globalUpdate": "Global update",
+    "itemsPerRow": "Items per row",
+    "itemsPerRowLibrary": "Items per row in library",
+    "jumpToLastReadChapter": "Jump to last read chapter in list",
+    "novel": "Novel",
+    "novelBadges": "Novel Badges",
+    "novelSort": "Novel Sort",
+    "refreshMetadata": "Automatically refresh metadata",
+    "refreshMetadataDescription": "Check for new cover and details when updating library",
+    "updateLibrary": "Update library on launch",
+    "updateOngoing": "Only update ongoing novels",
+    "updateTime": "Show last update time",
+    "useFAB": "Use FAB in Library"
+  },
+  "globalSearch": {
+    "allSources": "all sources",
+    "pinnedSources": "pinned sources",
+    "searchIn": "Search a novel in"
+  },
+  "history": "History",
+  "historyScreen": {
+    "clearHistorWarning": "Are you sure? All history will be lost.",
+    "searchbar": "Search history"
+  },
+  "library": "Library",
+  "libraryScreen": {
+    "bottomSheet": {
+      "display": {
+        "badges": "Badges",
+        "comfortable": "Comfortable grid",
+        "compact": "Compact grid",
+        "displayMode": "Display mode",
+        "downloadBadges": "Download badges",
+        "list": "ତାଲିକା",
+        "noTitle": "Cover only grid",
+        "showNoOfItems": "Show number of items",
+        "unreadBadges": "Unread badges"
+      },
+      "filters": {
+        "completed": "Completed",
+        "downloaded": "Downloaded",
+        "started": "Started",
+        "unread": "Unread"
+      },
+      "sortOrders": {
+        "alphabetically": "Alphabetically",
+        "dateAdded": "ଯୋଡ଼ାଯିବା ତାରିଖ",
+        "download": "Downloaded",
+        "lastRead": "Last read",
+        "lastUpdated": "Last updated",
+        "totalChapters": "Total chapters",
+        "unread": "Unread"
+      }
+    },
+    "empty": "Your library is empty. Add series to your library from Browse.",
+    "searchbar": "Search library"
+  },
+  "more": "More",
+  "moreScreen": {
+    "downloadOnly": "Downloaded only",
+    "incognitoMode": "Incognito mode"
+  },
+  "novelScreen": {
+    "addToLibaray": "ଲାଇବ୍ରେରୀରେ ଯୋଡ଼ନ୍ତୁ",
+    "chapters": "chapters",
+    "continueReading": "Continue reading",
+    "convertToEpubModal": {
+      "chaptersWarning": "Only downloaded chapters are included in the EPUB",
+      "chooseLocation": "Select EPUB storage directory",
+      "pathToFolder": "Path to EPUB save folder",
+      "useCustomCSS": "Use custom CSS",
+      "useCustomJS": "Use custom JS",
+      "useCustomJSWarning": "May not be supported by all EPUB readers",
+      "useReaderTheme": "Use reader theme"
+    },
+    "inLibaray": "In library",
+    "jumpToChapterModal": {
+      "chapterName": "Chapter Name",
+      "chapterNumber": "Chapter Number",
+      "error": {
+        "validChapterName": "Enter a valid chapter name",
+        "validChapterNumber": "Enter a valid chapter number"
+      },
+      "jumpToChapter": "Jump to Chapter",
+      "openChapter": "Open Chapter"
+    },
+    "migrate": "Migrate",
+    "noSummary": "No summary"
+  },
+  "readerScreen": {
+    "bottomSheet": {
+      "allowTextSelection": "Allow text selection",
+      "autoscroll": "AutoScroll",
+      "bionicReading": "Bionic Reading",
+      "color": "Color",
+      "fontStyle": "Font style",
+      "fullscreen": "Fullscreen",
+      "lineHeight": "Line Height",
+      "pageReader": "Tap left or right to navigate through pages in the reader (Experimental)",
+      "removeExtraSpacing": "Remove extra paragraph spacing",
+      "renderHml": "Render HTML",
+      "scrollAmount": "Scroll amount (screen height by default)",
+      "showBatteryAndTime": "Show battery and time",
+      "showProgressPercentage": "Show progress percentage",
+      "showSwipeMargins": "Show swipe margins",
+      "swipeGestures": "ଅଧ୍ୟାୟଗୁଡ଼ିକ ମଧ୍ୟରେ ଚଳନ କରିବାକୁ ବାମ କିମ୍ବା ଡାହାଣକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ",
+      "textAlign": "Text align",
+      "textSize": "Text size",
+      "useChapterDrawerSwipeNavigation": "ଡ୍ରର୍ ଖୋଲିବାକୁ ଡାହାଣକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ",
+      "verticalSeekbar": "Vertical Seekbar",
+      "volumeButtonsScroll": "Volume buttons scroll"
+    },
+    "drawer": {
+      "scrollToBottom": "Scroll to bottom",
+      "scrollToCurrentChapter": "Scroll to current chapter",
+      "scrollToTop": "Scroll to top"
+    },
+    "finished": "Finished",
+    "noNextChapter": "There's no next chapter"
+  },
+  "readerSettings": {
+    "autoScrollInterval": "Auto scroll interval (in seconds)",
+    "autoScrollOffset": "Auto scroll offset (screen height by default)",
+    "backgroundColor": "Background color",
+    "backgroundColorModal": "Reader background color",
+    "clearCustomCSS": "Are you sure? Your custom CSS would be reset.",
+    "clearCustomJS": "Are you sure? Your custom JS would be reset.",
+    "cssHint": "Hint: You can create source specific CSS configuration with the source ID. (#sourceId-[SOURCEID])",
+    "customCSS": "Custom CSS",
+    "customJS": "Custom JS",
+    "deleteCustomTheme": "Delete custom theme",
+    "jsHint": "Hint: You have access to following variables: html, novelName, chapterName, sourceId, chapterId, novelId",
+    "notSaved": "Not saved",
+    "openCSSFile": "Open CSS file",
+    "openJSFile": "Open JS file",
+    "preset": "Preset",
+    "readerTheme": "Reader theme",
+    "saveCustomTheme": "Save custom theme",
+    "textColor": "Text color",
+    "textColorModal": "Reader text color",
+    "title": "Reader",
+    "verticalSeekbarDesc": "Switch between vertical and horizontal seekbar"
+  },
+  "sourceScreen": {
+    "noResultsFound": "No results found"
+  },
+  "statsScreen": {
+    "downloadedChapters": "Downloaded chapters",
+    "genreDistribution": "Genre distribution",
+    "readChapters": "Read chapters",
+    "statusDistribution": "Status distribution",
+    "title": "Statistics",
+    "titlesInLibrary": "Titles in library",
+    "totalChapters": "Total chapters",
+    "unreadChapters": "Unread chapters"
+  },
+  "updates": "Updates",
+  "updatesScreen": {
+    "emptyView": "No recent updates",
+    "lastUpdatedAt": "Library last updated:",
+    "newChapters": "new Chapters",
+    "searchbar": "Search updates",
+    "updatesLower": "updates"
+  }
+}

@@ -1,118 +1,57 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import 'react-native-gesture-handler';
+import {enableFreeze} from 'react-native-screens';
+
+enableFreeze(true);
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StatusBar} from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+// import LottieSplashScreen from 'react-native-lottie-splash-screen';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Provider as PaperProvider} from 'react-native-paper';
+import * as Notifications from 'expo-notifications';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {createTables} from '@database/db';
+import AppErrorBoundary from '@components/AppErrorBoundary/AppErrorBoundary';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import Main from './src/navigators/Main';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+declare global {
+  interface ObjectConstructor {
+    typedKeys<T>(obj: T): Array<keyof T>;
+  }
 }
+Object.typedKeys = Object.keys as any;
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+Notifications.setNotificationHandler({
+  handleNotification: async () => {
+    return {
+      shouldShowAlert: true,
+      shouldPlaySound: true,
+      shouldSetBadge: true,
+    };
   },
 });
+
+createTables();
+// LottieSplashScreen.hide();
+
+const App = () => {
+  return (
+    <GestureHandlerRootView style={{flex: 1}}>
+      <AppErrorBoundary>
+        <SafeAreaProvider>
+          <PaperProvider>
+            <BottomSheetModalProvider>
+              <StatusBar translucent={true} backgroundColor="transparent" />
+              <Main />
+            </BottomSheetModalProvider>
+          </PaperProvider>
+        </SafeAreaProvider>
+      </AppErrorBoundary>
+    </GestureHandlerRootView>
+  );
+};
 
 export default App;
