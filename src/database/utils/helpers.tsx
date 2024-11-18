@@ -2,11 +2,11 @@ import {SQLiteBindParams, SQLiteDatabase} from 'expo-sqlite';
 
 export function runTransaction(
   db: SQLiteDatabase,
-  queryObject: Array<[string, SQLiteBindParams]>,
+  queryObject: Array<[string] | [string, SQLiteBindParams | undefined]>,
 ) {
   db.withTransactionAsync(async () => {
     for (const [query, params] of queryObject) {
-      db.runAsync(query, params);
+      db.runAsync(query, params ?? []);
     }
   });
 }
