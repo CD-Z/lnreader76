@@ -1,16 +1,16 @@
 import * as SQLite from 'expo-sqlite';
-import { showToast } from '@utils/showToast';
-import { ChapterInfo, DownloadedChapter } from '../types';
-import { ChapterItem } from '@plugins/types';
+import {showToast} from '@utils/showToast';
+import {ChapterInfo, DownloadedChapter} from '../types';
+import {ChapterItem} from '@plugins/types';
 
-import { txnErrorCallback } from '@database/utils/helpers';
-import { Update } from '../types';
-import { noop } from 'lodash-es';
-import { getString } from '@strings/translations';
+import {txnErrorCallback} from '@database/utils/helpers';
+import {Update} from '../types';
+import {noop} from 'lodash-es';
+import {getString} from '@strings/translations';
 import FileManager from '@native/FileManager';
-import { NOVEL_STORAGE } from '@utils/Storages';
+import {NOVEL_STORAGE} from '@utils/Storages';
 
-const db = SQLite.openDatabase('lnreader.db');
+const db = SQLite.openDatabaseSync('lnreader.db');
 const insertChapterQuery = `
 INSERT OR IGNORE INTO Chapter (path, name, releaseTime, novelId, chapterNumber, page, position)
 VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -23,7 +23,7 @@ export const insertChapters = async (
   if (!chapters?.length) {
     return;
   }
-  db.transaction(tx => {
+  db.withTransactionAsync(async () => {
     chapters.forEach((chapter, index) => {
       tx.executeSql(
         insertChapterQuery,
@@ -36,7 +36,7 @@ export const insertChapters = async (
           chapter.page || '1',
           index,
         ],
-        (txObj, { insertId }) => {
+        (txObj, {insertId}) => {
           if (!insertId || insertId < 0) {
             tx.executeSql(
               `
@@ -63,15 +63,13 @@ export const insertChapters = async (
 const getPageChaptersQuery = (sort = 'ORDER BY position ASC', filter = '') =>
   `SELECT * FROM Chapter WHERE novelId = ? AND page = ? ${filter} ${sort}`;
 
-export const getCustomPages = (
-  novelId: number,
-): Promise<{ page: string }[]> => {
+export const getCustomPages = (novelId: number): Promise<{page: string}[]> => {
   return new Promise(resolve => {
     db.transaction(tx => {
       tx.executeSql(
         'SELECT DISTINCT page from Chapter WHERE novelId = ?',
         [novelId],
-        (txObj, { rows }) => resolve(rows._array),
+        (txObj, {rows}) => resolve(rows._array),
       );
     });
   });
@@ -83,7 +81,7 @@ export const getNovelChapters = (novelId: number): Promise<ChapterInfo[]> => {
       tx.executeSql(
         'SELECT * FROM Chapter WHERE novelId = ?',
         [novelId],
-        (txObj, { rows }) => resolve((rows as any)._array),
+        (txObj, {rows}) => resolve((rows as any)._array),
         txnErrorCallback,
       );
     }),
@@ -98,7 +96,7 @@ export const getChapter = async (
       tx.executeSql(
         'SELECT * FROM Chapter WHERE id = ?',
         [chapterId],
-        (txObj, { rows }) => resolve(rows.item(0)),
+        (txObj, {rows}) => resolve(rows.item(0)),
         txnErrorCallback,
       );
     }),
@@ -116,7 +114,7 @@ export const getPageChapters = (
       tx.executeSql(
         getPageChaptersQuery(sort, filter),
         [novelId, page || '1'],
-        (txObj, { rows }) => resolve((rows as any)._array),
+        (txObj, {rows}) => resolve((rows as any)._array),
         txnErrorCallback,
       );
     }),
@@ -329,7 +327,7 @@ const getReadDownloadedChapters = async (): Promise<DownloadedChapter[]> => {
         JOIN Novel
         ON Novel.id = Chapter.novelId AND unread = 0 AND isDownloaded = 1`,
         [],
-        (txObj, { rows }) => resolve((rows as any)._array),
+        (txObj, {rows}) => resolve((rows as any)._array),
       );
     });
   });
@@ -441,7 +439,7 @@ export const getDownloadedChapters = (): Promise<DownloadedChapter[]> => {
       tx.executeSql(
         getDownloadedChaptersQuery,
         undefined,
-        (txObj, { rows }) => {
+        (txObj, {rows}) => {
           resolve(rows._array);
         },
         (_txObj, _error) => {
@@ -471,7 +469,7 @@ export const getUpdatesFromDb = (): Promise<Update[]> => {
       tx.executeSql(
         getUpdatesQuery,
         [],
-        (txObj, { rows }) => resolve((rows as any)._array),
+        (txObj, {rows}) => resolve((rows as any)._array),
         txnErrorCallback,
       );
     }),

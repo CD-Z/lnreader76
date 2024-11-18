@@ -1,6 +1,6 @@
 import * as Localization from 'expo-localization';
 import * as dayjs from 'dayjs';
-import i18n from 'i18n-js';
+import {I18n} from 'i18n-js';
 
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import localeData from 'dayjs/plugin/localeData';
@@ -42,10 +42,9 @@ import vi from './languages/vi_VN/strings.json';
 import zhCn from './languages/zh_CN/strings.json';
 import zhTw from './languages/zh_TW/strings.json';
 
-import { StringMap } from './types';
+import {StringMap} from './types';
 
-i18n.fallbacks = true;
-i18n.translations = {
+const i18n = new I18n({
   ar,
   de,
   en,
@@ -61,9 +60,7 @@ i18n.translations = {
   vi,
   'zh-CN': zhCn,
   'zh-TW': zhTw,
-};
-i18n.locale = Localization.locale;
-dayjs.locale(Localization.locale);
+});
 
 export const localization = Localization.locale;
 export const getString = (

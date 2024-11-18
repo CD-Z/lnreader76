@@ -4,34 +4,33 @@ import {
   createCategoryDefaultQuery,
   createCategoryTriggerQuery,
 } from './tables/CategoryTable';
-import { createNovelTableQuery } from './tables/NovelTable';
-import { createNovelCategoryTableQuery } from './tables/NovelCategoryTable';
+import {createNovelTableQuery} from './tables/NovelTable';
+import {createNovelCategoryTableQuery} from './tables/NovelCategoryTable';
 import {
   createChapterTableQuery,
   createChapterNovelIdIndexQuery,
 } from './tables/ChapterTable';
-import { dbTxnErrorCallback } from './utils/helpers';
-import { noop } from 'lodash-es';
-import { createRepositoryTableQuery } from './tables/RepositoryTable';
+
+import {createRepositoryTableQuery} from './tables/RepositoryTable';
 
 const dbName = 'lnreader.db';
 
-const db = SQLite.openDatabase(dbName);
+const db = SQLite.openDatabaseSync(dbName);
 
-export const createTables = () => {
-  db.exec([{ sql: 'PRAGMA foreign_keys = ON', args: [] }], false, () => {});
-  db.transaction(tx => {
-    tx.executeSql(createNovelTableQuery);
-    tx.executeSql(createCategoriesTableQuery);
-    tx.executeSql(createCategoryDefaultQuery);
-    tx.executeSql(createCategoryTriggerQuery);
-    tx.executeSql(createNovelCategoryTableQuery);
-    tx.executeSql(createChapterTableQuery);
-    tx.executeSql(createChapterNovelIdIndexQuery);
+export const createTables = async () => {
+  await db.execAsync('PRAGMA foreign_keys = ON');
+  db.withTransactionSync(() => {
+    db.runAsync(createNovelTableQuery);
+    db.runAsync(createCategoriesTableQuery);
+    db.runAsync(createCategoryDefaultQuery);
+    db.runAsync(createCategoryTriggerQuery);
+    db.runAsync(createNovelCategoryTableQuery);
+    db.runAsync(createChapterTableQuery);
+    db.runAsync(createChapterNovelIdIndexQuery);
   });
 
-  db.transaction(tx => {
-    tx.executeSql(createRepositoryTableQuery);
+  db.withTransactionAsync(async () => {
+    db.runAsync(createRepositoryTableQuery);
   });
 };
 
@@ -39,16 +38,12 @@ export const createTables = () => {
  * For Testing
  */
 export const deleteDatabase = async () => {
-  db.transaction(
-    tx => {
-      tx.executeSql('DROP TABLE Category');
-      tx.executeSql('DROP TABLE Novel');
-      tx.executeSql('DROP TABLE NovelCategory');
-      tx.executeSql('DROP TABLE Chapter');
-      tx.executeSql('DROP TABLE Download');
-      tx.executeSql('DROP TABLE Repository');
-    },
-    dbTxnErrorCallback,
-    noop,
-  );
+  db.withTransactionSync(() => {
+    db.runAsync('DROP TABLE Category');
+    db.runAsync('DROP TABLE Novel');
+    db.runAsync('DROP TABLE NovelCategory');
+    db.runAsync('DROP TABLE Chapter');
+    db.runAsync('DROP TABLE Download');
+    db.runAsync('DROP TABLE Repository');
+  });
 };
