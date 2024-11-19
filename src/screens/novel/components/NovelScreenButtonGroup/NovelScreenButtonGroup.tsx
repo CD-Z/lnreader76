@@ -1,15 +1,15 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { NovelInfo } from '@database/types';
-import { useNavigation } from '@react-navigation/native';
-import { useBoolean } from '@hooks';
-import { ThemeColors } from '@theme/types';
-import { getString } from '@strings/translations';
+import {NovelInfo} from '@database/types';
+import {useNavigation} from '@react-navigation/native';
+import {useBoolean} from '@hooks';
+import {ThemeColors} from '@theme/types';
+import {getString} from '@strings/translations';
 import SetCategoryModal from '../SetCategoriesModal';
-import { NovelScreenProps } from '@navigators/types';
-import { useTrackedNovel, useTracker } from '@hooks/persisted';
+import {NovelScreenProps} from '@navigators/types';
+import {useTrackedNovel, useTracker} from '@hooks/persisted';
 
 interface NovelScreenButtonGroupProps {
   novel: NovelInfo;
@@ -24,11 +24,13 @@ const NovelScreenButtonGroup: React.FC<NovelScreenButtonGroupProps> = ({
   handleFollowNovel,
   theme,
 }) => {
-  const { inLibrary, isLocal } = novel;
-  const { navigate } = useNavigation<NovelScreenProps['navigation']>();
+  const {inLibrary, isLocal} = novel;
+  const {navigate} = useNavigation<NovelScreenProps['navigation']>();
   const followButtonColor = inLibrary ? theme.primary : theme.outline;
-  const { tracker } = useTracker();
-  const { trackedNovel } = useTrackedNovel(novel.id);
+  console.log(useTracker);
+
+  // const {tracker} = useTracker();
+  const {trackedNovel} = useTrackedNovel(novel.id);
 
   const trackerButtonColor = trackedNovel ? theme.primary : theme.outline;
 
@@ -56,17 +58,16 @@ const NovelScreenButtonGroup: React.FC<NovelScreenButtonGroupProps> = ({
       <View style={styles.buttonGroupContainer}>
         <View style={styles.buttonContainer}>
           <Pressable
-            android_ripple={{ color: theme.rippleColor }}
+            android_ripple={{color: theme.rippleColor}}
             onPress={handleFollowNovel}
             onLongPress={showSetCategoryModal}
-            style={styles.button}
-          >
+            style={styles.button}>
             <MaterialCommunityIcons
               name={inLibrary ? 'heart' : 'heart-outline'}
               color={followButtonColor}
               size={24}
             />
-            <Text style={[styles.buttonLabel, { color: followButtonColor }]}>
+            <Text style={[styles.buttonLabel, {color: followButtonColor}]}>
               {getString(
                 inLibrary
                   ? 'novelScreen.inLibaray'
@@ -75,39 +76,37 @@ const NovelScreenButtonGroup: React.FC<NovelScreenButtonGroupProps> = ({
             </Text>
           </Pressable>
         </View>
-        {tracker ? (
+        {/* {tracker ? (
           <View style={styles.buttonContainer}>
             <Pressable
-              android_ripple={{ color: theme.rippleColor }}
+              android_ripple={{color: theme.rippleColor}}
               onPress={handleTrackerSheet}
-              style={styles.button}
-            >
+              style={styles.button}>
               <MaterialCommunityIcons
                 name={trackedNovel ? 'check' : 'sync'}
                 color={trackerButtonColor}
                 size={24}
               />
-              <Text style={[styles.buttonLabel, { color: trackerButtonColor }]}>
+              <Text style={[styles.buttonLabel, {color: trackerButtonColor}]}>
                 {trackedNovel
                   ? getString('novelScreen.tracked')
                   : getString('novelScreen.tracking')}
               </Text>
             </Pressable>
           </View>
-        ) : null}
+        ) : null} */}
         {inLibrary && !isLocal ? (
           <View style={styles.buttonContainer}>
             <Pressable
-              android_ripple={{ color: theme.rippleColor }}
+              android_ripple={{color: theme.rippleColor}}
               onPress={handleMigrateNovel}
-              style={styles.button}
-            >
+              style={styles.button}>
               <MaterialCommunityIcons
                 name="swap-vertical-variant"
                 color={theme.outline}
                 size={24}
               />
-              <Text style={[styles.buttonLabel, { color: theme.outline }]}>
+              <Text style={[styles.buttonLabel, {color: theme.outline}]}>
                 {getString('novelScreen.migrate')}
               </Text>
             </Pressable>
@@ -116,16 +115,15 @@ const NovelScreenButtonGroup: React.FC<NovelScreenButtonGroupProps> = ({
         {!isLocal ? (
           <View style={styles.buttonContainer}>
             <Pressable
-              android_ripple={{ color: theme.rippleColor }}
+              android_ripple={{color: theme.rippleColor}}
               onPress={handleOpenWebView}
-              style={styles.button}
-            >
+              style={styles.button}>
               <MaterialCommunityIcons
                 name="earth"
                 color={theme.outline}
                 size={24}
               />
-              <Text style={[styles.buttonLabel, { color: theme.outline }]}>
+              <Text style={[styles.buttonLabel, {color: theme.outline}]}>
                 WebView
               </Text>
             </Pressable>

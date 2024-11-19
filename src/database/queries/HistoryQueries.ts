@@ -20,15 +20,6 @@ const getHistoryQuery = `
 export const getHistoryFromDb = async (): Promise<History[]> => {
   return (await getAllTransaction(db, [[getHistoryQuery]])) as any;
 };
-// const getCategoriesQuery = `
-//   SELECT * FROM Category ORDER BY sort
-// 	`;
-
-// export const getHistoryFromDb = async (): Promise<History[]> => {
-//   const d = (await getAllTransaction(db, [[getCategoriesQuery]])) as any;
-//   console.log('d', d);
-//   return d;
-// };
 
 export const insertHistory = async (chapterId: number) => {
   runTransaction(db, [

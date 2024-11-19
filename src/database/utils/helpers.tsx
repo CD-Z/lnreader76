@@ -46,8 +46,6 @@ export function getAllTransaction(
     for (const [query, params = []] of queryObject) {
       db.getAllAsync(query, params)
         .then(res => {
-          console.log(res);
-
           resolve(res as any);
         })
         .catch(e => {

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, ToastAndroid } from 'react-native';
-import { overlay, Portal } from 'react-native-paper';
+import React, {useState} from 'react';
+import {StyleSheet, View, ToastAndroid} from 'react-native';
+import {overlay, Portal} from 'react-native-paper';
 import BottomSheet from '@components/BottomSheet/BottomSheet';
 
 import TrackSearchDialog from './TrackSearchDialog';
 import SetTrackStatusDialog from './SetTrackStatusDialog';
 import SetTrackScoreDialog from './SetTrackScoreDialog';
 import SetTrackChaptersDialog from './SetTrackChaptersDialog';
-import { AddTrackingCard, TrackedItemCard } from './TrackerCards';
-import { ThemeColors } from '@theme/types';
-import { BottomSheetModalMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
-import { useTracker, useTrackedNovel } from '@hooks/persisted';
-import { UserListStatus } from '@services/Trackers';
-import { NovelInfo } from '@database/types';
+import {AddTrackingCard, TrackedItemCard} from './TrackerCards';
+import {ThemeColors} from '@theme/types';
+import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
+import {useTracker, useTrackedNovel} from '@hooks/persisted';
+import {UserListStatus} from '@services/Trackers';
+import {NovelInfo} from '@database/types';
 
 interface Props {
   bottomSheetRef: React.RefObject<BottomSheetModalMethods>;
@@ -20,9 +20,9 @@ interface Props {
   theme: ThemeColors;
 }
 
-const TrackSheet = ({ bottomSheetRef, novel, theme }: Props) => {
-  const { tracker } = useTracker();
-  const { trackedNovel, trackNovel, untrackNovel, updateTrackedNovel } =
+const TrackSheet = ({bottomSheetRef, novel, theme}: Props) => {
+  const {tracker} = useTracker();
+  const {trackedNovel, trackNovel, untrackNovel, updateTrackedNovel} =
     useTrackedNovel(novel.id);
 
   const [trackSearchDialog, setTrackSearchDialog] = useState(false);
@@ -69,7 +69,7 @@ const TrackSheet = ({ bottomSheetRef, novel, theme }: Props) => {
   const updateTrackChapters = (newChapters: string) => {
     if (newChapters !== '') {
       const newProgress = Number(newChapters);
-      updateTrackedNovel(tracker, { progress: newProgress });
+      updateTrackedNovel(tracker, {progress: newProgress});
 
       setTrackChaptersDialog(false);
     } else {
@@ -78,12 +78,12 @@ const TrackSheet = ({ bottomSheetRef, novel, theme }: Props) => {
   };
 
   const updateTrackStatus = (newStatus: UserListStatus) => {
-    updateTrackedNovel(tracker, { status: newStatus });
+    updateTrackedNovel(tracker, {status: newStatus});
     setTrackStatusDialog(false);
   };
 
   const updateTrackScore = (newScore: number) => {
-    updateTrackedNovel(tracker, { score: newScore });
+    updateTrackedNovel(tracker, {score: newScore});
     setTrackScoreDialog(false);
   };
 
@@ -93,9 +93,8 @@ const TrackSheet = ({ bottomSheetRef, novel, theme }: Props) => {
         <View
           style={[
             styles.contentContainer,
-            { backgroundColor: overlay(2, theme.surface) },
-          ]}
-        >
+            {backgroundColor: overlay(2, theme.surface)},
+          ]}>
           {!trackedNovel ? (
             tracker.name === 'MyAnimeList' ? (
               <AddTrackingCard

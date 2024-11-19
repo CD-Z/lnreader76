@@ -1,15 +1,11 @@
-import { useMemo } from 'react';
-import { Appearance } from 'react-native';
-import {
-  useMMKVBoolean,
-  useMMKVObject,
-  useMMKVString,
-} from 'react-native-mmkv';
-import { overlay } from 'react-native-paper';
+import {useMemo} from 'react';
+import {Appearance} from 'react-native';
+import {useMMKVBoolean, useMMKVObject, useMMKVString} from 'react-native-mmkv';
+import {overlay} from 'react-native-paper';
 import Color from 'color';
 
-import { defaultTheme } from '@theme/md3/defaultTheme';
-import { ThemeColors } from '@theme/types';
+import {defaultTheme} from '@theme/md3/defaultTheme';
+import {ThemeColors} from '@theme/types';
 
 const getElevationColor = (colors: ThemeColors, elevation: number) => {
   return Color(colors.surface)
@@ -18,7 +14,7 @@ const getElevationColor = (colors: ThemeColors, elevation: number) => {
     .string();
 };
 
-export const useTheme = (): ThemeColors => {
+export default function useTheme() {
   const [appTheme] = useMMKVObject<ThemeColors>('APP_THEME');
   const [isAmoledBlack] = useMMKVBoolean('AMOLED_BLACK');
   const [customAccent] = useMMKVString('CUSTOM_ACCENT_COLOR');
@@ -58,4 +54,4 @@ export const useTheme = (): ThemeColors => {
   }, [appTheme?.id, isAmoledBlack, customAccent]);
 
   return theme;
-};
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,17 +9,17 @@ import {
   NativeScrollEvent,
   Share,
 } from 'react-native';
-import { Drawer } from 'react-native-drawer-layout';
-import { FlashList } from '@shopify/flash-list';
+import {Drawer} from 'react-native-drawer-layout';
+import {FlashList} from '@shopify/flash-list';
 import Animated, {
   FadeIn,
   FadeOut,
   useSharedValue,
 } from 'react-native-reanimated';
 
-import { Portal, Appbar, Snackbar, AnimatedFAB } from 'react-native-paper';
+import {Portal, Appbar, Snackbar, AnimatedFAB} from 'react-native-paper';
 import * as Haptics from 'expo-haptics';
-import { showToast } from '../../utils/showToast';
+import {showToast} from '../../utils/showToast';
 import {
   useAppSettings,
   useDownload,
@@ -30,30 +30,30 @@ import NovelInfoHeader from './components/Info/NovelInfoHeader';
 import NovelBottomSheet from './components/NovelBottomSheet';
 import TrackSheet from './components/Tracker/TrackSheet';
 import JumpToChapterModal from './components/JumpToChapterModal';
-import { Actionbar } from '../../components/Actionbar/Actionbar';
+import {Actionbar} from '../../components/Actionbar/Actionbar';
 import EditInfoModal from './components/EditInfoModal';
-import { pickCustomNovelCover } from '../../database/queries/NovelQueries';
+import {pickCustomNovelCover} from '../../database/queries/NovelQueries';
 import DownloadCustomChapterModal from './components/DownloadCustomChapterModal';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useBoolean } from '@hooks';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useBoolean} from '@hooks';
 import NovelScreenLoading from './components/LoadingAnimation/NovelScreenLoading';
-import { NovelScreenProps } from '@navigators/types';
-import { ChapterInfo } from '@database/types';
+import {NovelScreenProps} from '@navigators/types';
+import {ChapterInfo} from '@database/types';
 import ChapterItem from './components/ChapterItem';
-import { getString } from '@strings/translations';
+import {getString} from '@strings/translations';
 import NovelDrawer from './components/NovelDrawer';
 import {
   updateNovel,
   updateNovelPage,
 } from '@services/updates/LibraryUpdateQueries';
-import { useFocusEffect } from '@react-navigation/native';
-import { isNumber } from 'lodash-es';
+import {useFocusEffect} from '@react-navigation/native';
+import {isNumber} from 'lodash-es';
 import NovelAppbar from './components/NovelAppbar';
-import { resolveUrl } from '@services/plugin/fetch';
-import { updateChapterProgressByIds } from '@database/queries/ChapterQueries';
+import {resolveUrl} from '@services/plugin/fetch';
+import {updateChapterProgressByIds} from '@database/queries/ChapterQueries';
 
-const Novel = ({ route, navigation }: NovelScreenProps) => {
-  const { name, path, pluginId } = route.params;
+const Novel = ({route, navigation}: NovelScreenProps) => {
+  const {name, path, pluginId} = route.params;
   const [updating, setUpdating] = useState(false);
   const {
     useFabForContinueReading,
@@ -90,9 +90,9 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
     deleteChapters,
   } = useNovel(path, pluginId);
   const theme = useTheme();
-  const { top: topInset, bottom: bottomInset } = useSafeAreaInsets();
+  const {top: topInset, bottom: bottomInset} = useSafeAreaInsets();
 
-  const { downloadQueue, downloadChapter, downloadChapters } = useDownload();
+  const {downloadQueue, downloadChapter, downloadChapters} = useDownload();
 
   const [selected, setSelected] = useState<ChapterInfo[]>([]);
   const [editInfoModal, showEditInfoModal] = useState(false);
@@ -135,9 +135,7 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
       })
         .then(() => getNovel())
         .then(() =>
-          showToast(
-            getString('novelScreen.updatedToast', { name: novel.name }),
-          ),
+          showToast(getString('novelScreen.updatedToast', {name: novel.name})),
         )
         .catch(error => showToast(error.message))
         .finally(() => setUpdating(false));
@@ -343,7 +341,7 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
     return null;
   }
   const navigateToChapter = (chapter: ChapterInfo) => {
-    navigation.navigate('Chapter', { novel, chapter });
+    navigation.navigate('Chapter', {novel, chapter});
   };
 
   const setCustomNovelCover = async () => {
@@ -364,7 +362,7 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
       swipeEnabled={pages.length > 1}
       hideStatusBarOnOpen={true}
       swipeMinVelocity={1000}
-      drawerStyle={{ backgroundColor: 'transparent' }}
+      drawerStyle={{backgroundColor: 'transparent'}}
       renderDrawerContent={() => (
         <NovelDrawer
           theme={theme}
@@ -373,10 +371,9 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
           openPage={openPage}
           closeDrawer={closeDrawer}
         />
-      )}
-    >
+      )}>
       <Portal.Host>
-        <View style={[styles.container, { backgroundColor: theme.background }]}>
+        <View style={[styles.container, {backgroundColor: theme.background}]}>
           <Portal>
             {selected.length === 0 ? (
               <NovelAppbar
@@ -407,8 +404,7 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
                   flexDirection: 'row',
                   alignItems: 'center',
                   paddingBottom: 8,
-                }}
-              >
+                }}>
                 <Appbar.Action
                   icon="close"
                   iconColor={theme.onBackground}
@@ -416,7 +412,7 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
                 />
                 <Appbar.Content
                   title={`${selected.length}`}
-                  titleStyle={{ color: theme.onSurface }}
+                  titleStyle={{color: theme.onSurface}}
                 />
                 <Appbar.Action
                   icon="select-all"
@@ -428,14 +424,14 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
               </Animated.View>
             )}
           </Portal>
-          <View style={{ minHeight: 3, flex: 1 }}>
+          <View style={{minHeight: 3, flex: 1}}>
             <FlashList
               ref={flatlistRef}
               estimatedItemSize={64}
               data={chapters}
               extraData={[chapters]}
               removeClippedSubviews={true}
-              renderItem={({ item }) => (
+              renderItem={({item}) => (
                 <ChapterItem
                   isDownloading={downloadQueue.some(
                     c => c.data.chapterId === item.id,
@@ -454,7 +450,7 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
                 />
               )}
               keyExtractor={item => 'chapter_' + item.id}
-              contentContainerStyle={{ paddingBottom: 100 }}
+              contentContainerStyle={{paddingBottom: 100}}
               ListHeaderComponent={
                 <NovelInfoHeader
                   novel={novel}
@@ -482,7 +478,7 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
             <AnimatedFAB
               style={[
                 styles.fab,
-                { backgroundColor: theme.primary, marginBottom: bottomInset },
+                {backgroundColor: theme.primary, marginBottom: bottomInset},
               ]}
               extended={isFabExtended}
               color={theme.onPrimary}
@@ -510,10 +506,9 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
                   deleteChapters(chapters.filter(c => c.isDownloaded));
                 },
               }}
-              theme={{ colors: { primary: theme.primary } }}
-              style={{ backgroundColor: theme.surface, marginBottom: 32 }}
-            >
-              <Text style={{ color: theme.onSurface }}>
+              theme={{colors: {primary: theme.primary}}}
+              style={{backgroundColor: theme.surface, marginBottom: 32}}>
+              <Text style={{color: theme.onSurface}}>
                 {getString('novelScreen.deleteMessage')}
               </Text>
             </Snackbar>
@@ -552,11 +547,11 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
             filter={filter}
             showChapterTitles={showChapterTitles}
           />
-          <TrackSheet
+          {/* <TrackSheet
             bottomSheetRef={trackerSheetRef}
             novel={novel}
             theme={theme}
-          />
+          /> */}
         </View>
       </Portal.Host>
     </Drawer>
@@ -566,7 +561,7 @@ const Novel = ({ route, navigation }: NovelScreenProps) => {
 export default Novel;
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: {flex: 1},
   rowBack: {
     alignItems: 'center',
     flex: 1,

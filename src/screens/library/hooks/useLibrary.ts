@@ -28,26 +28,16 @@ export const useLibrary = ({searchText}: {searchText?: string}) => {
     if (searchText) {
       setIsLoading(true);
     }
-    console.log('called1');
-    const categories = await getCategoriesFromDb();
-    console.log('called2');
-    const novels = await getLibraryWithCategory({
-      searchText,
-      filter,
-      sortOrder,
-      downloadedOnlyMode,
-    });
 
-    // const [categories, novels] = await Promise.all([
-    //   getCategoriesFromDb(),
-    //   getLibraryWithCategory({
-    //     searchText,
-    //     filter,
-    //     sortOrder,
-    //     downloadedOnlyMode,
-    //   }),
-    // ]);
-    console.log(categories, novels);
+    const [categories, novels] = await Promise.all([
+      getCategoriesFromDb(),
+      getLibraryWithCategory({
+        searchText,
+        filter,
+        sortOrder,
+        downloadedOnlyMode,
+      }),
+    ]);
 
     const res = categories.map(category => ({
       ...category,
@@ -60,8 +50,6 @@ export const useLibrary = ({searchText}: {searchText?: string}) => {
 
   useFocusEffect(
     useCallback(() => {
-      console.log('called');
-
       getLibrary();
     }, [searchText, filter, sortOrder, downloadedOnlyMode]),
   );
