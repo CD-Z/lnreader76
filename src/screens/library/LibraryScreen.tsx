@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import React, {useRef, useState} from 'react';
+import {StyleSheet, Text, useWindowDimensions, View} from 'react-native';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {
   NavigationState,
   SceneRendererProps,
@@ -9,34 +9,34 @@ import {
 } from 'react-native-tab-view';
 import color from 'color';
 
-import { SearchbarV2, Button } from '@components/index';
-import { LibraryView } from './components/LibraryListView';
+import {SearchbarV2, Button} from '@components/index';
+import {LibraryView} from './components/LibraryListView';
 import LibraryBottomSheet from './components/LibraryBottomSheet/LibraryBottomSheet';
-import { Banner } from './components/Banner';
-import { Actionbar } from '@components/Actionbar/Actionbar';
+import {Banner} from './components/Banner';
+import {Actionbar} from '@components/Actionbar/Actionbar';
 
-import { useLibrary } from './hooks/useLibrary';
+import {useLibrary} from './hooks/useLibrary';
 import {
   useAppSettings,
   useHistory,
   useLibrarySettings,
   useTheme,
 } from '@hooks/persisted';
-import { useSearch, useBackHandler, useBoolean } from '@hooks';
-import { getString } from '@strings/translations';
-import { FAB, Portal } from 'react-native-paper';
+import {useSearch, useBackHandler, useBoolean} from '@hooks';
+import {getString} from '@strings/translations';
+import {FAB, Portal} from 'react-native-paper';
 import {
   markAllChaptersRead,
   markAllChaptersUnread,
 } from '@database/queries/ChapterQueries';
-import { removeNovelsFromLibrary } from '@database/queries/NovelQueries';
+import {removeNovelsFromLibrary} from '@database/queries/NovelQueries';
 import SetCategoryModal from '@screens/novel/components/SetCategoriesModal';
-import { debounce } from 'lodash-es';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import {debounce} from 'lodash-es';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import SourceScreenSkeletonLoading from '@screens/browse/loadingAnimation/SourceScreenSkeletonLoading';
-import { Row } from '@components/Common';
-import { LibraryScreenProps } from '@navigators/types';
-import { NovelInfo } from '@database/types';
+import {Row} from '@components/Common';
+import {LibraryScreenProps} from '@navigators/types';
+import {NovelInfo} from '@database/types';
 import * as DocumentPicker from 'expo-document-picker';
 import ServiceManager from '@services/ServiceManager';
 
@@ -45,20 +45,20 @@ type State = NavigationState<{
   title: string;
 }>;
 
-const LibraryScreen = ({ navigation }: LibraryScreenProps) => {
+const LibraryScreen = ({navigation}: LibraryScreenProps) => {
   const theme = useTheme();
-  const { searchText, setSearchText, clearSearchbar } = useSearch();
+  const {searchText, setSearchText, clearSearchbar} = useSearch();
   const {
     showNumberOfNovels = false,
     downloadedOnlyMode = false,
     incognitoMode = false,
   } = useLibrarySettings();
 
-  const { useLibraryFAB = false } = useAppSettings();
+  const {useLibraryFAB = false} = useAppSettings();
 
-  const { isLoading: isHistoryLoading, history, error } = useHistory();
+  const {isLoading: isHistoryLoading, history, error} = useHistory();
 
-  const { right: rightInset } = useSafeAreaInsets();
+  const {right: rightInset} = useSafeAreaInsets();
 
   const onChangeText = debounce((text: string) => {
     setSearchText(text);
@@ -68,7 +68,7 @@ const LibraryScreen = ({ navigation }: LibraryScreenProps) => {
     clearSearchbar();
   };
 
-  const { library, refetchLibrary, isLoading } = useLibrary({ searchText });
+  const {library, refetchLibrary, isLoading} = useLibrary({searchText});
   const [selectedNovelIds, setSelectedNovelIds] = useState<number[]>([]);
   useBackHandler(() => {
     if (selectedNovelIds.length) {
@@ -86,13 +86,26 @@ const LibraryScreen = ({ navigation }: LibraryScreenProps) => {
   const bottomSheetRef = useRef<BottomSheetModal | null>(null);
 
   const renderTabBar = (
-    props: SceneRendererProps & { navigationState: State },
-  ) =>
-    library.length ? (
+    props: SceneRendererProps & {navigationState: State},
+  ) => {
+    return (
+      <TabBar
+        {...props}
+        indicatorStyle={{backgroundColor: theme.primary, height: 3}}
+        style={{
+          backgroundColor: theme.surface,
+        }}
+        inactiveColor={theme.secondary}
+        activeColor={theme.primary}
+        android_ripple={{color: theme.rippleColor}}
+      />
+    );
+    // if (!library.length) return null;
+    return (
       <TabBar
         {...props}
         scrollEnabled
-        indicatorStyle={{ backgroundColor: theme.primary, height: 3 }}
+        indicatorStyle={{backgroundColor: theme.primary, height: 3}}
         style={[
           {
             backgroundColor: theme.surface,
@@ -102,32 +115,31 @@ const LibraryScreen = ({ navigation }: LibraryScreenProps) => {
           },
           styles.tabBar,
         ]}
-        tabStyle={{ width: 'auto' }}
+        tabStyle={{width: 'auto'}}
         gap={8}
-        renderLabel={({ route, color }) => (
-          <Row>
-            <Text style={{ color, fontWeight: '600' }}>{route.title}</Text>
-            {showNumberOfNovels ? (
-              <View
-                style={[
-                  styles.badgeCtn,
-                  { backgroundColor: theme.surfaceVariant },
-                ]}
-              >
-                <Text
-                  style={[styles.badgetText, { color: theme.onSurfaceVariant }]}
-                >
-                  {(route as any)?.novels.length}
-                </Text>
-              </View>
-            ) : null}
-          </Row>
-        )}
+        // renderTabBarItem={({route}) => (
+        //   <Row>
+        //     <Text style={{fontWeight: '600'}}>{route.title}</Text>
+        //     {showNumberOfNovels ? (
+        //       <View
+        //         style={[
+        //           styles.badgeCtn,
+        //           {backgroundColor: theme.surfaceVariant},
+        //         ]}>
+        //         <Text
+        //           style={[styles.badgetText, {color: theme.onSurfaceVariant}]}>
+        //           {(route as any)?.novels.length}
+        //         </Text>
+        //       </View>
+        //     ) : null}
+        //   </Row>
+        // )}
         inactiveColor={theme.secondary}
         activeColor={theme.primary}
-        android_ripple={{ color: theme.rippleColor }}
+        android_ripple={{color: theme.rippleColor}}
       />
-    ) : null;
+    );
+  };
 
   const searchbarPlaceholder =
     selectedNovelIds.length === 0
@@ -257,7 +269,7 @@ const LibraryScreen = ({ navigation }: LibraryScreenProps) => {
           })),
         }}
         renderTabBar={renderTabBar}
-        renderScene={({ route }) =>
+        renderScene={({route}) =>
           isLoading ? (
             <SourceScreenSkeletonLoading theme={theme} />
           ) : (
@@ -286,7 +298,7 @@ const LibraryScreen = ({ navigation }: LibraryScreenProps) => {
           )
         }
         onIndexChange={setIndex}
-        initialLayout={{ width: layout.width }}
+        initialLayout={{width: layout.width}}
       />
       {useLibraryFAB &&
       !isHistoryLoading &&
@@ -296,7 +308,7 @@ const LibraryScreen = ({ navigation }: LibraryScreenProps) => {
         <FAB
           style={[
             styles.fab,
-            { backgroundColor: theme.primary, marginRight: rightInset + 16 },
+            {backgroundColor: theme.primary, marginRight: rightInset + 16},
           ]}
           color={theme.onPrimary}
           uppercase={false}

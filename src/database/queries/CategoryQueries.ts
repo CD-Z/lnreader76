@@ -10,7 +10,9 @@ const getCategoriesQuery = `
 	`;
 
 export const getCategoriesFromDb = async (): Promise<Category[]> => {
-  return getAllTransaction(db, [[getCategoriesQuery]]) as any;
+  const d = (await getAllTransaction(db, [[getCategoriesQuery]])) as any;
+  console.log('d', d);
+  return d;
 };
 
 export const getCategoriesWithCount = async (

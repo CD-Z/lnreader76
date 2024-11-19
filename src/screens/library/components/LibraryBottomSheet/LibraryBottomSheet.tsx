@@ -1,11 +1,11 @@
-import React, { Ref, useMemo, useState } from 'react';
-import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
-import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
+import React, {Ref, useMemo, useState} from 'react';
+import {StyleSheet, Text, useWindowDimensions, View} from 'react-native';
+import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import color from 'color';
 
-import { useLibrarySettings, useTheme } from '@hooks/persisted';
-import { getString } from '@strings/translations';
-import { Checkbox, SortItem } from '@components/Checkbox/Checkbox';
+import {useLibrarySettings, useTheme} from '@hooks/persisted';
+import {getString} from '@strings/translations';
+import {Checkbox, SortItem} from '@components/Checkbox/Checkbox';
 import {
   DisplayModes,
   displayModesList,
@@ -14,10 +14,10 @@ import {
   LibrarySortOrder,
   librarySortOrderList,
 } from '@screens/library/constants/constants';
-import { FlashList } from '@shopify/flash-list';
-import { RadioButton } from '@components/RadioButton/RadioButton';
-import { overlay } from 'react-native-paper';
-import { BottomSheetView, BottomSheetModal } from '@gorhom/bottom-sheet';
+import {FlashList} from '@shopify/flash-list';
+import {RadioButton} from '@components/RadioButton/RadioButton';
+import {overlay} from 'react-native-paper';
+import {BottomSheetView, BottomSheetModal} from '@gorhom/bottom-sheet';
 import BottomSheet from '@components/BottomSheet/BottomSheet';
 
 interface LibraryBottomSheetProps {
@@ -33,12 +33,12 @@ const FirstRoute = () => {
   } = useLibrarySettings();
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <FlashList
         estimatedItemSize={4}
         extraData={[filter]}
         data={libraryFilterList}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <Checkbox
             label={item.label}
             theme={theme}
@@ -60,16 +60,16 @@ const FirstRoute = () => {
 
 const SecondRoute = () => {
   const theme = useTheme();
-  const { sortOrder = LibrarySortOrder.DateAdded_DESC, setLibrarySettings } =
+  const {sortOrder = LibrarySortOrder.DateAdded_DESC, setLibrarySettings} =
     useLibrarySettings();
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <FlashList
         data={librarySortOrderList}
         extraData={[sortOrder]}
         estimatedItemSize={5}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <SortItem
             label={item.label}
             theme={theme}
@@ -103,8 +103,8 @@ const ThirdRoute = () => {
   } = useLibrarySettings();
 
   return (
-    <View style={{ flex: 1 }}>
-      <Text style={[styles.sectionHeader, { color: theme.onSurfaceVariant }]}>
+    <View style={{flex: 1}}>
+      <Text style={[styles.sectionHeader, {color: theme.onSurfaceVariant}]}>
         {getString('libraryScreen.bottomSheet.display.badges')}
       </Text>
       <Checkbox
@@ -137,18 +137,18 @@ const ThirdRoute = () => {
         }
         theme={theme}
       />
-      <Text style={[styles.sectionHeader, { color: theme.onSurfaceVariant }]}>
+      <Text style={[styles.sectionHeader, {color: theme.onSurfaceVariant}]}>
         {getString('libraryScreen.bottomSheet.display.displayMode')}
       </Text>
       <FlashList
         estimatedItemSize={4}
         data={displayModesList}
         extraData={[displayMode]}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <RadioButton
             label={item.label}
             status={displayMode === item.value}
-            onPress={() => setLibrarySettings({ displayMode: item.value })}
+            onPress={() => setLibrarySettings({displayMode: item.value})}
             theme={theme}
           />
         )}
@@ -167,7 +167,7 @@ const LibraryBottomSheet: React.FC<LibraryBottomSheetProps> = ({
   const renderTabBar = (props: any) => (
     <TabBar
       {...props}
-      indicatorStyle={{ backgroundColor: theme.primary }}
+      indicatorStyle={{backgroundColor: theme.primary}}
       style={[
         {
           backgroundColor: overlay(2, theme.surface),
@@ -177,9 +177,6 @@ const LibraryBottomSheet: React.FC<LibraryBottomSheetProps> = ({
         },
         styles.tabBar,
       ]}
-      renderLabel={({ route, color }) => (
-        <Text style={{ color }}>{route.title}</Text>
-      )}
       inactiveColor={theme.onSurfaceVariant}
       activeColor={theme.primary}
       pressColor={color(theme.primary).alpha(0.12).string()}
@@ -189,9 +186,9 @@ const LibraryBottomSheet: React.FC<LibraryBottomSheetProps> = ({
   const [index, setIndex] = useState(0);
   const routes = useMemo(
     () => [
-      { key: 'first', title: getString('common.filter') },
-      { key: 'second', title: getString('common.sort') },
-      { key: 'third', title: getString('common.display') },
+      {key: 'first', title: getString('common.filter')},
+      {key: 'second', title: getString('common.sort')},
+      {key: 'third', title: getString('common.display')},
     ],
     [],
   );
@@ -207,15 +204,14 @@ const LibraryBottomSheet: React.FC<LibraryBottomSheetProps> = ({
       <BottomSheetView
         style={[
           styles.bottomSheetCtn,
-          { backgroundColor: overlay(2, theme.surface) },
-        ]}
-      >
+          {backgroundColor: overlay(2, theme.surface)},
+        ]}>
         <TabView
-          navigationState={{ index, routes }}
+          navigationState={{index, routes}}
           renderTabBar={renderTabBar}
           renderScene={renderScene}
           onIndexChange={setIndex}
-          initialLayout={{ width: layout.width }}
+          initialLayout={{width: layout.width}}
           style={styles.tabView}
         />
       </BottomSheetView>

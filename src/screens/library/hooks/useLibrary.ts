@@ -1,20 +1,20 @@
-import { useCallback, useState } from 'react';
-import { useFocusEffect } from '@react-navigation/native';
+import {useCallback, useState} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 
-import { getCategoriesFromDb } from '@database/queries/CategoryQueries';
+import {getCategoriesFromDb} from '@database/queries/CategoryQueries';
 import {
   getLibraryWithCategory,
   getLibraryNovelsFromDb,
 } from '@database/queries/LibraryQueries';
 
-import { Category, LibraryNovelInfo, NovelInfo } from '@database/types';
+import {Category, LibraryNovelInfo, NovelInfo} from '@database/types';
 
-import { useLibrarySettings } from '@hooks/persisted';
-import { LibrarySortOrder } from '../constants/constants';
+import {useLibrarySettings} from '@hooks/persisted';
+import {LibrarySortOrder} from '../constants/constants';
 
-type Library = Category & { novels: LibraryNovelInfo[] };
+type Library = Category & {novels: LibraryNovelInfo[]};
 
-export const useLibrary = ({ searchText }: { searchText?: string }) => {
+export const useLibrary = ({searchText}: {searchText?: string}) => {
   const {
     filter,
     sortOrder = LibrarySortOrder.DateAdded_DESC,
@@ -28,16 +28,26 @@ export const useLibrary = ({ searchText }: { searchText?: string }) => {
     if (searchText) {
       setIsLoading(true);
     }
+    console.log('called1');
+    const categories = await getCategoriesFromDb();
+    console.log('called2');
+    const novels = await getLibraryWithCategory({
+      searchText,
+      filter,
+      sortOrder,
+      downloadedOnlyMode,
+    });
 
-    const [categories, novels] = await Promise.all([
-      getCategoriesFromDb(),
-      getLibraryWithCategory({
-        searchText,
-        filter,
-        sortOrder,
-        downloadedOnlyMode,
-      }),
-    ]);
+    // const [categories, novels] = await Promise.all([
+    //   getCategoriesFromDb(),
+    //   getLibraryWithCategory({
+    //     searchText,
+    //     filter,
+    //     sortOrder,
+    //     downloadedOnlyMode,
+    //   }),
+    // ]);
+    console.log(categories, novels);
 
     const res = categories.map(category => ({
       ...category,
@@ -50,11 +60,13 @@ export const useLibrary = ({ searchText }: { searchText?: string }) => {
 
   useFocusEffect(
     useCallback(() => {
+      console.log('called');
+
       getLibrary();
     }, [searchText, filter, sortOrder, downloadedOnlyMode]),
   );
 
-  return { library, isLoading, refetchLibrary: getLibrary };
+  return {library, isLoading, refetchLibrary: getLibrary};
 };
 
 export const useLibraryNovels = () => {
@@ -72,5 +84,5 @@ export const useLibraryNovels = () => {
     }, []),
   );
 
-  return { library, setLibrary };
+  return {library, setLibrary};
 };

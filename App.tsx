@@ -45,6 +45,7 @@ const App = () => {
           <PaperProvider>
             <BottomSheetModalProvider>
               <StatusBar translucent={true} backgroundColor="transparent" />
+
               <Main />
             </BottomSheetModalProvider>
           </PaperProvider>

@@ -1,18 +1,18 @@
-import React, { Ref, useCallback } from 'react';
+import React, {Ref, useCallback} from 'react';
 import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
   BottomSheetModal,
   BottomSheetModalProps,
 } from '@gorhom/bottom-sheet';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 interface BottomSheetProps extends Omit<BottomSheetModalProps, 'ref'> {
   bottomSheetRef: Ref<BottomSheetModal> | null;
 }
 
 const BottomSheet: React.FC<BottomSheetProps> = props => {
-  const { bottom } = useSafeAreaInsets();
+  const {bottom} = useSafeAreaInsets();
   const renderBackdrop = useCallback(
     (backdropProps: BottomSheetBackdropProps) => (
       <BottomSheetBackdrop
@@ -23,14 +23,14 @@ const BottomSheet: React.FC<BottomSheetProps> = props => {
     ),
     [],
   );
+
   return (
     <BottomSheetModal
       ref={props.bottomSheetRef}
       backdropComponent={renderBackdrop}
       handleComponent={null}
-      containerStyle={{ paddingBottom: bottom }}
-      {...props}
-    >
+      containerStyle={{paddingBottom: bottom}}
+      {...props}>
       {props.children}
     </BottomSheetModal>
   );

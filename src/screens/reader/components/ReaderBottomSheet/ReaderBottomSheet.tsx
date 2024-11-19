@@ -1,28 +1,22 @@
-import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
-import React, { Ref, useMemo, useState } from 'react';
+import {StyleSheet, Text, useWindowDimensions, View} from 'react-native';
+import React, {Ref, useMemo, useState} from 'react';
 import color from 'color';
 
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import BottomSheet from '@components/BottomSheet/BottomSheet';
-import { useTheme } from '@hooks/persisted';
-import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
-import { getString } from '@strings/translations';
+import {useTheme} from '@hooks/persisted';
+import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
+import {getString} from '@strings/translations';
 
-import { overlay } from 'react-native-paper';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import {overlay} from 'react-native-paper';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import ReaderSettings from '@screens/settings/settingsGroups/readerSettingsGroup';
 import RenderSettings from '@screens/settings/dynamic/RenderSettings';
-import { SettingsSubGroupSettings } from '@screens/settings/Settings.d';
-import { List } from '@components';
+import {SettingsSubGroupSettings} from '@screens/settings/Settings.d';
+import {List} from '@components';
 
 const RenderTab = React.memo(
-  ({
-    settings,
-    tab,
-  }: {
-    settings: SettingsSubGroupSettings[];
-    tab: string;
-  }) => {
+  ({settings, tab}: {settings: SettingsSubGroupSettings[]; tab: string}) => {
     return (
       <View style={[styles.readerTab]}>
         <List.Section>
@@ -69,13 +63,11 @@ const ReaderBottomSheetV2: React.FC<ReaderBottomSheetV2Props> = ({
     }, []);
 
   const renderScene = SceneMap({
-    'readerTab': () => (
-      <RenderTab settings={settingsReaderTab} tab="readerTab" />
-    ),
-    'generalTab': () => (
+    readerTab: () => <RenderTab settings={settingsReaderTab} tab="readerTab" />,
+    generalTab: () => (
       <RenderTab settings={settingsGeneralTab} tab="generalTab" />
     ),
-    'displayTab': () => (
+    displayTab: () => (
       <RenderTab settings={settingsDisplayTab} tab="displayTab" />
     ),
   });
@@ -105,7 +97,7 @@ const ReaderBottomSheetV2: React.FC<ReaderBottomSheetV2Props> = ({
     return (
       <TabBar
         {...props}
-        indicatorStyle={{ backgroundColor: theme.primary }}
+        indicatorStyle={{backgroundColor: theme.primary}}
         style={[
           {
             backgroundColor: tabHeaderColor,
@@ -114,30 +106,26 @@ const ReaderBottomSheetV2: React.FC<ReaderBottomSheetV2Props> = ({
           },
           styles.tabBar,
         ]}
-        renderLabel={({ route, color }) => (
-          <Text style={{ color }}>{route.title}</Text>
-        )}
         inactiveColor={theme.onSurfaceVariant}
         activeColor={theme.primary}
         pressColor={color(theme.primary).alpha(0.12).string()}
       />
     );
   };
-  const { bottom } = useSafeAreaInsets();
+  const {bottom} = useSafeAreaInsets();
   return (
     <BottomSheet
       bottomSheetRef={bottomSheetRef}
       snapPoints={[360, 600]}
-      backgroundStyle={{ backgroundColor }}
+      backgroundStyle={{backgroundColor}}
       bottomInset={bottom}
-      containerStyle={{ borderRadius: 8 }}
-    >
+      containerStyle={{borderRadius: 8}}>
       <TabView
-        navigationState={{ index, routes }}
+        navigationState={{index, routes}}
         renderTabBar={renderTabBar}
         renderScene={renderScene}
         onIndexChange={setIndex}
-        initialLayout={{ width: layout.width }}
+        initialLayout={{width: layout.width}}
         style={styles.tabView}
       />
     </BottomSheet>

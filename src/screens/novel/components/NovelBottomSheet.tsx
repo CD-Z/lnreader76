@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, useWindowDimensions } from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, Text, useWindowDimensions} from 'react-native';
 import color from 'color';
 
-import { TabView, SceneMap, TabBar, TabViewProps } from 'react-native-tab-view';
-import { BottomSheetView } from '@gorhom/bottom-sheet';
+import {TabView, SceneMap, TabBar, TabViewProps} from 'react-native-tab-view';
+import {BottomSheetView} from '@gorhom/bottom-sheet';
 import BottomSheet from '@components/BottomSheet/BottomSheet';
-import { getString } from '@strings/translations';
+import {getString} from '@strings/translations';
 
-import { Checkbox, SortItem } from '@components/Checkbox/Checkbox';
+import {Checkbox, SortItem} from '@components/Checkbox/Checkbox';
 
-import { overlay } from 'react-native-paper';
-import { BottomSheetModalMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
-import { ThemeColors } from '@theme/types';
+import {overlay} from 'react-native-paper';
+import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
+import {ThemeColors} from '@theme/types';
 
 interface ChaptersSettingsSheetProps {
   bottomSheetRef: React.RefObject<BottomSheetModalMethods>;
@@ -37,7 +37,7 @@ const ChaptersSettingsSheet = ({
   const filterChapters = (val: string) => sortAndFilterChapters(sort, val);
 
   const FirstRoute = () => (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <Checkbox
         theme={theme}
         label={getString('novelScreen.bottomSheet.filters.downloaded')}
@@ -96,7 +96,7 @@ const ChaptersSettingsSheet = ({
   );
 
   const SecondRoute = () => (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <SortItem
         label={getString('novelScreen.bottomSheet.order.bySource')}
         status={
@@ -133,7 +133,7 @@ const ChaptersSettingsSheet = ({
   );
 
   const ThirdRoute = () => (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <Checkbox
         status={showChapterTitles}
         label={getString('novelScreen.bottomSheet.displays.sourceTitle')}
@@ -159,24 +159,21 @@ const ChaptersSettingsSheet = ({
 
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    { key: 'first', title: getString('common.filter') },
-    { key: 'second', title: getString('common.sort') },
-    { key: 'third', title: getString('common.display') },
+    {key: 'first', title: getString('common.filter')},
+    {key: 'second', title: getString('common.sort')},
+    {key: 'third', title: getString('common.display')},
   ]);
 
   const renderTabBar: TabViewProps<any>['renderTabBar'] = props => (
     <TabBar
       {...props}
-      indicatorStyle={{ backgroundColor: theme.primary }}
+      indicatorStyle={{backgroundColor: theme.primary}}
       style={{
         backgroundColor: overlay(2, theme.surface),
         borderBottomWidth: 1,
         borderBottomColor: theme.outline,
         elevation: 0,
       }}
-      renderLabel={({ route, color }) => (
-        <Text style={{ color }}>{route.title}</Text>
-      )}
       inactiveColor={theme.onSurfaceVariant}
       activeColor={theme.primary}
       pressColor={color(theme.primary).alpha(0.12).string()}
@@ -188,16 +185,15 @@ const ChaptersSettingsSheet = ({
       <BottomSheetView
         style={[
           styles.contentContainer,
-          { backgroundColor: overlay(2, theme.surface) },
-        ]}
-      >
+          {backgroundColor: overlay(2, theme.surface)},
+        ]}>
         <TabView
-          navigationState={{ index, routes }}
+          navigationState={{index, routes}}
           renderTabBar={renderTabBar}
           renderScene={renderScene}
           onIndexChange={setIndex}
-          initialLayout={{ width: layout.width }}
-          style={{ borderTopRightRadius: 8, borderTopLeftRadius: 8 }}
+          initialLayout={{width: layout.width}}
+          style={{borderTopRightRadius: 8, borderTopLeftRadius: 8}}
         />
       </BottomSheetView>
     </BottomSheet>

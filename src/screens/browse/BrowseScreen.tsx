@@ -1,24 +1,24 @@
-import { Text } from 'react-native';
-import React, { useMemo } from 'react';
-import { TabView, TabBar } from 'react-native-tab-view';
+import {Text} from 'react-native';
+import React, {useMemo} from 'react';
+import {TabView, TabBar} from 'react-native-tab-view';
 
-import { useSearch } from '@hooks';
-import { usePlugins, useTheme } from '@hooks/persisted';
-import { getString } from '@strings/translations';
+import {useSearch} from '@hooks';
+import {usePlugins, useTheme} from '@hooks/persisted';
+import {getString} from '@strings/translations';
 
-import { EmptyView, SearchbarV2 } from '@components';
-import { BrowseScreenProps } from '@navigators/types';
-import { AvailableTab, InstalledTab } from './components/BrowseTabs';
+import {EmptyView, SearchbarV2} from '@components';
+import {BrowseScreenProps} from '@navigators/types';
+import {AvailableTab, InstalledTab} from './components/BrowseTabs';
 
 const routes = [
-  { key: 'installedRoute', title: getString('browseScreen.installed') },
-  { key: 'availableRoute', title: getString('browseScreen.available') },
+  {key: 'installedRoute', title: getString('browseScreen.installed')},
+  {key: 'availableRoute', title: getString('browseScreen.available')},
 ];
 
-const BrowseScreen = ({ navigation }: BrowseScreenProps) => {
+const BrowseScreen = ({navigation}: BrowseScreenProps) => {
   const theme = useTheme();
-  const { searchText, setSearchText, clearSearchbar } = useSearch();
-  const { languagesFilter } = usePlugins();
+  const {searchText, setSearchText, clearSearchbar} = useSearch();
+  const {languagesFilter} = usePlugins();
 
   const searchbarActions = useMemo(
     () => [
@@ -51,8 +51,8 @@ const BrowseScreen = ({ navigation }: BrowseScreenProps) => {
         rightIcons={searchbarActions}
       />
       <TabView
-        navigationState={{ index, routes }}
-        renderScene={({ route }) => {
+        navigationState={{index, routes}}
+        renderScene={({route}) => {
           if (languagesFilter.length === 0) {
             return (
               <EmptyView
@@ -79,16 +79,13 @@ const BrowseScreen = ({ navigation }: BrowseScreenProps) => {
         renderTabBar={props => (
           <TabBar
             {...props}
-            indicatorStyle={{ backgroundColor: theme.primary, height: 3 }}
+            indicatorStyle={{backgroundColor: theme.primary, height: 3}}
             style={{
               backgroundColor: theme.surface,
             }}
-            renderLabel={({ route, color }) => (
-              <Text style={{ color, fontWeight: '600' }}>{route.title}</Text>
-            )}
             inactiveColor={theme.secondary}
             activeColor={theme.primary}
-            android_ripple={{ color: theme.rippleColor }}
+            android_ripple={{color: theme.rippleColor}}
           />
         )}
         swipeEnabled={false}
